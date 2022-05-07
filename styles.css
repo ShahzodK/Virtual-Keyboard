@@ -1,1 +1,110 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+* {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.keyboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 850px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 400px;
+}
+
+.keyboard-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  width: 850px;
+}
+
+.keyboard-row span {
+  display: inline-block;
+  vertical-align: middle;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  cursor: pointer;
+  color: white;
+  padding: 0;
+  background: #3c3a3a;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  padding-bottom: 0px;
+  margin: 4px;
+  border-radius: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.keyboard-row .key {
+  display: inline-block;
+}
+
+.keyboard-row .key-space {
+  width: 287px;
+  padding-right: 90px;
+  padding-left: 90px;
+}
+
+.keyboard-row .key-caps, .keyboard-row .key-shift, .keyboard-row .key-enter, .keyboard-row .key-backspace {
+  width: 97px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.keyboard-row .key-tab {
+  width: 65px;
+}
+
+textarea {
+  font-size: 18px;
+  background: #d7d3d3;
+  margin-right: auto;
+  margin-left: 332px;
+  border: none;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=styles.css.map */

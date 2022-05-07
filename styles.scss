@@ -1,0 +1,75 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    text-align: center;
+}
+.hidden {
+    display: none !important;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   // background: rgb(0,0,0);
+    width: 850px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 400px;
+    &-row {
+        display: flex;
+        margin-top: 2px;
+        justify-content: left;
+        width: 850px;
+        span {
+            display: inline-block;
+            vertical-align:middle;
+            align-self: center;
+            cursor: pointer;
+            color: white;
+            padding: 0;
+            background: rgb(60, 58, 58);
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            padding-bottom: 0px;
+            margin: 4px;
+            border-radius: 10px;
+            align-items: center;
+            text-align: center;
+        }
+        .key {
+            display: inline-block;
+            &-space {
+                width: 287px;
+                padding-right: 90px;
+                padding-left: 90px;
+            }
+            &-caps, &-shift,&-enter,&-backspace {
+                width: 97px;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+            &-tab {
+                width: 65px;
+            }
+        }
+    }
+
+}
+textarea {
+    font-size: 18px;
+    background: rgb(215, 211, 211);
+    margin-right: auto;
+    margin-left: 332px;
+    border: none;
+    border-radius: 10px;
+}
