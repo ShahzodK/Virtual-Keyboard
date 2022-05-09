@@ -107,4 +107,15 @@ textarea {
   border: none;
   border-radius: 10px;
 }
+
+.key-clicked {
+  background-color: #6dca1b !important;
+  border-radius: 50% !important;
+}
+
+.instructions {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
 /*# sourceMappingURL=styles.css.map */

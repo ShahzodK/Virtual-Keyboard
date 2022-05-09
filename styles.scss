@@ -1,3 +1,6 @@
+$key-bg:rgb(60, 58, 58);
+$key-clicked-bg:rgb(109, 202, 27);
+$textarea-bg:rgb(215, 211, 211);
 * {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -36,7 +39,7 @@ h1 {
             cursor: pointer;
             color: white;
             padding: 0;
-            background: rgb(60, 58, 58);
+            background: $key-bg;
             width: 40px;
             height: 40px;
             padding: 10px;
@@ -67,9 +70,29 @@ h1 {
 }
 textarea {
     font-size: 18px;
-    background: rgb(215, 211, 211);
+    background:$textarea-bg ;
     margin-right: auto;
     margin-left: 332px;
     border: none;
     border-radius: 10px;
+}
+
+// @keyframes key-active {
+//     from {
+//         background:$key-bg ;
+//     }
+//     to{
+//         background: ;
+//     }
+// }
+.key-clicked {
+    // animation-name: key-active;
+    // animation-duration: 0.1s;
+    background-color: $key-clicked-bg !important;
+    border-radius:50% !important;
+}
+.instructions {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
