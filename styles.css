@@ -1,5 +1,5 @@
 * {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -16,10 +16,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #968b8b;
 }
 
 h1 {
   text-align: center;
+  color: white;
 }
 
 .hidden {
@@ -27,6 +29,7 @@ h1 {
 }
 
 .keyboard {
+  font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,7 +43,7 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 850px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   height: 400px;
@@ -55,6 +58,7 @@ h1 {
       -ms-flex-pack: left;
           justify-content: left;
   width: 850px;
+  margin-left: -170px;
 }
 
 .keyboard-row span {
@@ -64,9 +68,9 @@ h1 {
       -ms-grid-row-align: center;
       align-self: center;
   cursor: pointer;
-  color: white;
+  color: #232121;
   padding: 0;
-  background: #3c3a3a;
+  background: white;
   width: 40px;
   height: 40px;
   padding: 10px;
@@ -87,35 +91,45 @@ h1 {
   width: 287px;
   padding-right: 90px;
   padding-left: 90px;
+  color: white;
+  background: #3c3a3a;
 }
 
 .keyboard-row .key-caps, .keyboard-row .key-shift, .keyboard-row .key-enter, .keyboard-row .key-backspace {
   width: 97px;
   padding-right: 15px;
   padding-left: 15px;
+  color: white;
+  background: #3c3a3a;
 }
 
 .keyboard-row .key-tab {
   width: 65px;
+  color: white;
+  background: #3c3a3a;
 }
 
 textarea {
   font-size: 18px;
   background: #d7d3d3;
   margin-right: auto;
-  margin-left: 332px;
+  margin-left: auto;
   border: none;
   border-radius: 10px;
+  width: 1000px;
 }
 
 .key-clicked {
+  font-size: 19px;
   background-color: #6dca1b !important;
   border-radius: 50% !important;
+  color: white;
 }
 
 .instructions {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  color: white;
 }
 /*# sourceMappingURL=styles.css.map */

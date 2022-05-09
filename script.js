@@ -169,29 +169,49 @@ document.addEventListener('keydown', (e) => {
     }
 
 })
+document.addEventListener('mousedown', (e) => {
+    console.log(e.target.textContent)
+    switch (e.target.textContent) {
+        case 'Tab':
+            functionalKey.tab();
+            break;
+        case 'Space':
+            functionalKey.space();
+            break;
+        case 'Backspace':
+            functionalKey.backSpace();
+            break;
+        case 'Enter':
+            functionalKey.enter()
+            break;
+        default:
+            break;
+    }
+
+})
 //switchToCaps
 function switchToCaps(elem, eventListener, equalToCaps) {
-    elem.addEventListener(eventListener, (e) => {
-        if (e.getModifierState('CapsLock')) {
-            if (equalToCaps == 'CapsLock') {
-                if (russian[0].classList.contains('hidden') && russianCaps[0].classList.contains('hidden')) {
-                    englishCaps.forEach(item => {
-                        item.classList.toggle('hidden')
-                    });
-                    english.forEach(item => {
-                        item.classList.toggle('hidden')
-                    });
-                } else if (english[0].classList.contains('hidden')) {
-                    russianCaps.forEach(item => {
-                        item.classList.toggle('hidden')
-                    });
-                    russian.forEach(item => {
-                        item.classList.toggle('hidden')
-                    });
-                }
+    console.log('work')
+    elem.addEventListener(eventListener, () => {
+        if (equalToCaps == 'CapsLock') {
+            if (russian[0].classList.contains('hidden') && russianCaps[0].classList.contains('hidden')) {
+                englishCaps.forEach(item => {
+                    item.classList.toggle('hidden')
+                });
+                english.forEach(item => {
+                    item.classList.toggle('hidden')
+                });
+            } else if (english[0].classList.contains('hidden')) {
+                russianCaps.forEach(item => {
+                    item.classList.toggle('hidden')
+                });
+                russian.forEach(item => {
+                    item.classList.toggle('hidden')
+                });
             }
-
         }
+
+
     })
 
 }
@@ -236,22 +256,48 @@ input.addEventListener('keyup', () => {
 input.addEventListener('keydown', (e) => {
 
     e.preventDefault();
+    if (e.key == 'Shift') {
+        pressed.add('Shift');
+    }
+    if (e.key == 'Alt') {
+        pressed.add('Alt')
+    }
+    if (!pressed.has('Shift') && e.key && e.key !== 'Backspace' && e.key !== 'Escape' && e.key !== 'Shift' && e.key !== 'Alt' && e.key !== 'Control' && e.key !== 'Enter' && e.key !== 'Tab' && e.key !== 'CapsLock' && e.code[0] !== 'F') {
+        if (e.code == 'ArrowLeft' || e.code == 'ArrowRight' || e.code == 'ArrowUp' || e.code == 'ArrowDown') {
+            switch (e.code) {
+                case 'ArrowLeft':
+                    input.textContent += '◄';
+                    
+                    break;
+                case 'ArrowRight':
+                    input.textContent += '►';
 
-    if (e.key && e.key !== 'Backspace' && e.key !== 'Escape' && e.key !== 'Shift' && e.key !== 'Alt' && e.key !== 'Control' && e.key !== 'Enter' && e.key !== 'Tab' && e.key !== 'CapsLock' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.code[0] !== 'F') {
+                    break;
+                case 'ArrowUp':
+                    input.textContent += '▲';
 
-        if (!english[0].classList.contains('hidden')) {
+                    break;
+                case 'ArrowDown':
+                    input.textContent += '▼';
+
+                    break;
+
+                default:
+                    break;
+            }
+        } else if (!english[0].classList.contains('hidden')) {
             if (e.code.length > 4) {
                 input.textContent += e.key;
             } else {
                 input.textContent += e.code.slice(-1).toLowerCase();
             }
-        } else if (!englishCaps[0].classList.contains('hidden')) {
+        } else if (!pressed.has('Shift') && !englishCaps[0].classList.contains('hidden')) {
             if (e.code.length > 4) {
                 input.textContent += e.key;
             } else {
                 input.textContent += e.code.slice(-1).toUpperCase();
             }
-        } else if (!russian[0].classList.contains('hidden')) {
+        } else if (!pressed.has('Shift') && !russian[0].classList.contains('hidden')) {
             if (e.code.length > 4) {
                 console.log(e.key)
                 input.textContent += e.key;
@@ -259,7 +305,7 @@ input.addEventListener('keydown', (e) => {
                 let code = e.code.slice(-1).toLowerCase();
                 input.textContent += engToRus[code];
             }
-        } else if (!russianCaps[0].classList.contains('hidden')) {
+        } else if (!pressed.has('Shift') && !russianCaps[0].classList.contains('hidden')) {
             if (e.code.length > 4) {
                 input.textContent += e.key.toLowerCase();
             } else {
@@ -273,15 +319,56 @@ input.addEventListener('keydown', (e) => {
 
 // Writing in physical keyboard
 document.addEventListener('keydown', (e) => {
+
     e.preventDefault();
+    console.log(e.key)
+    if (e.key && e.code !== 'Space' && e.key !== 'Alt') {
+        if (e.code == 'Digit1' || e.code == 'Digit2' || e.code == 'Digit3' || e.code == 'Digit4' || e.code == 'Digit5' || e.code == 'Digit6' || e.code == 'Digit7' || e.code == 'Digit8' || e.code == 'Digit9' || e.code == 'Digit0' || e.code == 'Minus' || e.code == 'Equal' || e.code == 'Comma' || e.code == 'Period' || e.code == 'Slash' || e.code == 'Quote' || e.code == 'Semicolon' || e.code == 'BracketLeft' || e.code == 'BracketRight' || e.code == 'Backslash') {
+            pressed.add(e.key)
+        } else if (e.key !== 'Shift' && e.key !== 'Alt' && e.key !== 'Space' && e.key !== 'Control' && e.key !== 'MetaLeft' && e.key !== 'ContextMenu') {
+            console.log(1);
+            pressed.add(e.code.slice(-1).toLowerCase());
+        }
+
+
+        console.log(e.code)
+    }
+    if (e.key == 'Shift') {
+        pressed.add('Shift');
+    }
     if (e.key == 'Alt') {
         pressed.add('Alt')
     }
-    if (e.key == 'Shift') {
-        pressed.add('Shift')
+    let iterator = pressed.entries();
+    let pressedEntries;
+    for (const entry of iterator) {
+        pressedEntries = entry;
     }
+    console.log(pressed)
+    if (e.code == 'ArrowLeft' || e.code == 'ArrowRight' || e.code == 'ArrowUp' || e.code == 'ArrowDown') {
+        switch (e.code) {
+            case 'ArrowLeft':
+                input.textContent += '◄';
+                
+                break;
+            case 'ArrowRight':
+                input.textContent += '►';
 
-    if (e.key && e.key !== 'Backspace' && e.key !== 'Escape' && e.key !== 'Shift' && e.key !== 'Alt' && e.key !== 'Control' && e.key !== 'Enter' && e.key !== 'Tab' && e.key !== 'CapsLock' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.path[0] !== input && e.code[0] !== 'F') {
+                break;
+            case 'ArrowUp':
+                input.textContent += '▲';
+
+                break;
+            case 'ArrowDown':
+                input.textContent += '▼';
+
+                break;
+
+            default:
+                break;
+        }
+    }
+    else if (!pressed.has('Shift') && e.key && e.key !== 'Backspace' && e.key !== 'Escape' && e.key !== 'Shift' && e.key !== 'Alt' && e.key !== 'Control' && e.key !== 'Enter' && e.key !== 'Tab' && e.key !== 'CapsLock' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.path[0] !== input && e.code[0] !== 'F') {
         if (!english[0].classList.contains('hidden')) {
             if (e.code.length > 4) {
                 input.textContent += e.key
@@ -319,9 +406,36 @@ document.addEventListener('keydown', (e) => {
 
     }
 
+    // using shift 
+    if (pressed.size == 2 && pressed.has('Shift') && (!english[0].classList.contains('hidden') || !englishCaps[0].classList.contains('hidden'))) {
+        console.log(3)
+        console.log(pressedEntries)
+        if (!english[0].classList.contains('hidden') && pressedEntries[1] !== 'Shift' && pressedEntries[1] !== 'Alt') {
+            console.log(pressedEntries[1])
+            input.textContent += pressedEntries[1].toUpperCase()
+        } else if (!englishCaps[0].classList.contains('hidden') && pressedEntries[1] !== 'Shift' && pressedEntries[1] !== 'Alt') {
+            input.textContent += pressedEntries[1].toLowerCase()
+        }
 
-    if (pressed.size == 2 && (!russian[0].classList.contains('hidden') || !russianCaps[0].classList.contains('hidden'))) {
+    } else if (pressed.size == 2 && pressed.has('Shift') && (!russian[0].classList.contains('hidden') || !russianCaps[0].classList.contains('hidden'))) {
+        console.log(pressedEntries)
+        console.log(4)
+        if (!russian[0].classList.contains('hidden') && pressedEntries[1] !== 'Shift' && pressedEntries[1] !== 'Alt') {
 
+            let codeCaps = e.code.slice(-1).toLowerCase();
+            input.textContent += engToRus[codeCaps].toUpperCase();
+
+        } else if (!russianCaps[0].classList.contains('hidden') && pressedEntries[1] !== 'Shift' && pressedEntries[1] !== 'Alt') {
+
+            let codeCaps = e.code.slice(-1).toLowerCase();
+            input.textContent += engToRus[codeCaps].toLowerCase();
+        }
+    }
+
+
+    //changing layout
+
+    if (pressed.size == 2 && pressed.has('Alt') && pressed.has('Shift') && (!russian[0].classList.contains('hidden') || !russianCaps[0].classList.contains('hidden'))) {
 
         if (!russian[0].classList.contains('hidden')) {
             window.localStorage.clear()
@@ -343,7 +457,7 @@ document.addEventListener('keydown', (e) => {
             });
         }
 
-    } else if (pressed.size == 2 && (!english[0].classList.contains('hidden') || !englishCaps[0].classList.contains('hidden'))) {
+    } else if (pressed.size == 2 && pressed.has('Alt') && pressed.has('Shift') && (!english[0].classList.contains('hidden') || !englishCaps[0].classList.contains('hidden'))) {
         if (!english[0].classList.contains('hidden')) {
             window.localStorage.clear()
             window.localStorage.setItem('ru', 'true');
@@ -368,7 +482,9 @@ document.addEventListener('keydown', (e) => {
 
     }
 
-})
+
+
+});
 
 
 document.addEventListener('keyup', () => {
@@ -378,16 +494,16 @@ document.addEventListener('keyup', () => {
 
 
 document.addEventListener('keyup', (e) => {
-    if (e.key == 'Alt') {
-        pressed.delete('Alt')
-    }
 
-    if (e.key == 'Shift') {
-        pressed.delete('Shift')
-    }
-    switchToCaps(document, 'keyup', e.key)
+    pressed.delete(e.key)
+    pressed.delete(e.code.slice(-1))
+    pressed.delete(e.code.slice(-1).toLowerCase())
 
 });
+
+document.addEventListener('keyup', (e) => {
+    switchToCaps(document, 'keydown', e.key)
+})
 
 
 keyboard.addEventListener('mousedown', (e) => {
@@ -398,7 +514,7 @@ keyboard.addEventListener('mousedown', (e) => {
         input.textContent += e.target.textContent;
     }
     //switchToCaps
-    switchToCaps(keyboard, 'mousedown', e.target.textContent, );
+    switchToCaps(keyboard, 'mousedown', e.target.textContent);
 
 });
 // document.addEventListener('keydown', (e) => {

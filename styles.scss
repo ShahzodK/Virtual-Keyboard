@@ -2,28 +2,31 @@ $key-bg:rgb(60, 58, 58);
 $key-clicked-bg:rgb(109, 202, 27);
 $textarea-bg:rgb(215, 211, 211);
 * {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: rgb(150, 139, 139);
+
 }
 h1 {
     text-align: center;
+    color: white;
 }
 .hidden {
     display: none !important;
 }
 
 .keyboard {
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   // background: rgb(0,0,0);
-    width: 850px;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
     height: 400px;
@@ -32,14 +35,16 @@ h1 {
         margin-top: 2px;
         justify-content: left;
         width: 850px;
+        //margin-right: auto;
+        margin-left: -170px;
         span {
             display: inline-block;
             vertical-align:middle;
             align-self: center;
             cursor: pointer;
-            color: white;
+            color: rgb(35, 33, 33);
             padding: 0;
-            background: $key-bg;
+            background: white;
             width: 40px;
             height: 40px;
             padding: 10px;
@@ -49,20 +54,27 @@ h1 {
             align-items: center;
             text-align: center;
         }
+  
         .key {
             display: inline-block;
             &-space {
                 width: 287px;
                 padding-right: 90px;
                 padding-left: 90px;
+                color: white;
+                background: $key-bg;
             }
             &-caps, &-shift,&-enter,&-backspace {
                 width: 97px;
                 padding-right: 15px;
                 padding-left: 15px;
+                color: white;
+                background: $key-bg;
             }
             &-tab {
                 width: 65px;
+                color: white;
+                background: $key-bg;
             }
         }
     }
@@ -72,27 +84,21 @@ textarea {
     font-size: 18px;
     background:$textarea-bg ;
     margin-right: auto;
-    margin-left: 332px;
+    margin-left: auto;
     border: none;
     border-radius: 10px;
+    width: 1000px;
 }
 
-// @keyframes key-active {
-//     from {
-//         background:$key-bg ;
-//     }
-//     to{
-//         background: ;
-//     }
-// }
 .key-clicked {
-    // animation-name: key-active;
-    // animation-duration: 0.1s;
+    font-size: 19px;
     background-color: $key-clicked-bg !important;
     border-radius:50% !important;
+    color: white;
 }
 .instructions {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    color: white;
 }
