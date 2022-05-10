@@ -190,9 +190,8 @@ document.addEventListener('mousedown', (e) => {
 
 })
 //switchToCaps
-function switchToCaps(elem, eventListener, equalToCaps) {
+function switchToCaps( equalToCaps) {
     console.log('work')
-    elem.addEventListener(eventListener, () => {
         if (equalToCaps == 'CapsLock') {
             if (russian[0].classList.contains('hidden') && russianCaps[0].classList.contains('hidden')) {
                 englishCaps.forEach(item => {
@@ -211,8 +210,7 @@ function switchToCaps(elem, eventListener, equalToCaps) {
             }
         }
 
-
-    })
+  
 
 }
 
@@ -502,7 +500,7 @@ document.addEventListener('keyup', (e) => {
 });
 
 document.addEventListener('keyup', (e) => {
-    switchToCaps(document, 'keydown', e.key)
+    switchToCaps(e.key)
 })
 
 
@@ -514,7 +512,7 @@ keyboard.addEventListener('mousedown', (e) => {
         input.textContent += e.target.textContent;
     }
     //switchToCaps
-    switchToCaps(keyboard, 'mousedown', e.target.textContent);
+    switchToCaps(e.target.textContent);
 
 });
 // document.addEventListener('keydown', (e) => {
